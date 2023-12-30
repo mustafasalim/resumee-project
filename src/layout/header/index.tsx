@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 function Header() {
 
   return (
-    <header className="flex justify-evenly w-full h-[630px] bg-[#EFEFEF]  ">
+    <header className="flex justify-evenly w-full h-[630px] bg-[#fafafa]  ">
         <div className='flex justify-evenly w-full mt-10'>
         <div>
             <div className="text-[96px] text-black font-bold">

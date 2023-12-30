@@ -2,7 +2,7 @@
 
 function Footer() {
   return (
-    <footer className=" w-full h-[339px] bg-[#EFEFEF]">
+    <footer className=" w-full h-[339px] bg-[#fafafa]">
 
         <div className=" flex items-center justify-center text-center text-stone-300 text-[25px] font-extrabold">
        <div className="mt-40">
