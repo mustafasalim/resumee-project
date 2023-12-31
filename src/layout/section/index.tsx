@@ -1,12 +1,35 @@
-import { QRCode, Space } from "antd"
+import { QRCode, Space, Rate, message } from "antd"
+import React, { useState } from "react"
+
 function Section() {
+  const desc = ["terrible", "bad", "normal", "good", "wonderful"]
+  const [value, setValue] = useState(3)
+  const [messageApi, contextHolder] = message.useMessage();
+  const success = () => {
+    messageApi.open({
+      type: 'success',
+      content: 'Thank you sir',
+    });
+  };
+
   return (
     <section>
+       {contextHolder}
       <div className="flex justify-evenly w-full mt-40">
         <div className="text-black text-[64px] font-extrabold">
           We made CV designs
           <br />
           more modern and useful
+          <div className="mt-56 text-[40px] text-green-500">
+            <Space onClick={success}>
+              <Rate
+                tooltips={desc}
+                onChange={setValue}
+                value={value}
+              />
+              {value ? <span>{desc[value - 1]}</span> : ""}
+            </Space>
+          </div>
         </div>
         <div className="w-[659px] h-[614px]">
           <img
@@ -23,7 +46,7 @@ function Section() {
         <div className="w-full flex items-center justify-center">
           <Space className="flex gap-10">
             <QRCode
-             className=""
+              className=""
               errorLevel="H"
               value="https://github.com/mustafasalim/resumee-project"
               icon="https://cdn-icons-png.flaticon.com/512/25/25231.png"
