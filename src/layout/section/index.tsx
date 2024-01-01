@@ -5,11 +5,21 @@ function Section() {
   const desc = ["terrible", "bad", "normal", "good", "wonderful"]
   const [value, setValue] = useState(3)
   const [messageApi, contextHolder] = message.useMessage();
-  const success = () => {
+  const key = 'updatable';
+  const openMessage = () => {
     messageApi.open({
-      type: 'success',
-      content: 'Thank you sir',
+      key,
+      type: 'loading',
+      content: 'Loading...',
     });
+    setTimeout(() => {
+      messageApi.open({
+        key,
+        type: 'success',
+        content: 'Thank you',
+        duration: 2,
+      });
+    }, 1000);
   };
 
   return (
@@ -21,7 +31,7 @@ function Section() {
           <br />
           more modern and useful
           <div className="mt-56 text-[40px] text-green-500">
-            <Space onClick={success}>
+            <Space onClick={openMessage}>
               <Rate
                 tooltips={desc}
                 onChange={setValue}

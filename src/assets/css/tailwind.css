@@ -5,3 +5,18 @@
 html{
     font-family: 'M PLUS Rounded 1c', sans-serif;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.ant-btn.css-dev-only-do-not-override-gzal6t.ant-btn-primary{
+  background-color:#1677FF;
+}
+
