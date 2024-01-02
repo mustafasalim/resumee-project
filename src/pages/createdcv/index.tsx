@@ -35,7 +35,7 @@ const CreatedCv: React.FC = () => {
 
 
   return (
-<div className="w-full h-screen flex items-center justify-center font-['Rounded Mplus 1c']">
+<div className="w-full mt-10 mb-10 flex items-center justify-center font-['Rounded Mplus 1c']">
 <div className='w-[1400px]'>
 <Steps className='font-bold' current={current} items={items} />
       <div className='border rounded-md mt-5'>{steps[current].content}</div>
