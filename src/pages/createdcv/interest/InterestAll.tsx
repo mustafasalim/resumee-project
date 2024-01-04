@@ -1,103 +1,203 @@
-import React from 'react';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, Form, Input } from 'antd';
 
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 4 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 20 },
-  },
-};
+import {Form,Input,Button,message} from 'antd'
+import { MinusCircleOutlined } from '@ant-design/icons';
+import { PlusOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { _cvAreasOfInterest } from '../../../redux/allCvState';
+function InterestAll() {
+  const validateMessages = {
+    required: "${label} is required!",
+    types: {
+      email: "${label} is not a valid email!",
+      number: "",
+    },
 
-const formItemLayoutWithOutLabel = {
-  wrapperCol: {
-    xs: { span: 24, offset: 0 },
-    sm: { span: 20, offset: 4 },
-  },
-};
-
-const InterestAll: React.FC = () => {
-  const onFinish = (values: any) => {
-    console.log('Received values of form:', values);
+    wrapperCol: {
+      xs: { span: 24 },
+      sm: { span: 20 },
+    },
   };
-
-  return (
-<div className='w-full flex items-center over justify-center h-[370px]'>
-<Form
-    
-    className='w-[700px]'
-    name="dynamic_form_item"
-    {...formItemLayoutWithOutLabel}
-    onFinish={onFinish}
-    style={{ maxWidth: 600 }}
-  >
-    <Form.List
-      name="names"
-      rules={[
-        {
-          validator: async (_, names) => {
-            if (!names || names.length < 2) {
-              return Promise.reject(new Error('At least 2 passengers'));
-            }
-          },
-        },
-      ]}
-    >
-      {(fields, { add, remove }, { errors }) => (
-        <>
-          {fields.map((field, index) => (
-            <Form.Item
-              {...(index === 0 ? formItemLayout : formItemLayoutWithOutLabel)}
-              label={index === 0 ? 'Passengers' : ''}
-              required={false}
-              key={field.key}
-            >
-              <Form.Item
-                {...field}
-                validateTrigger={['onChange', 'onBlur']}
-                rules={[
-                  {
-                    required: true,
-                    whitespace: true,
-                    message: "Please input passenger's name or delete this field.",
-                  },
-                ]}
-                noStyle
-              >
-                <Input placeholder="passenger name" style={{ width: '60%' }} />
-              </Form.Item>
-              {fields.length > 1 ? (
-                <MinusCircleOutlined
-                  className="dynamic-delete-button"
-                  onClick={() => remove(field.name)}
-                />
-              ) : null}
-            </Form.Item>
-          ))}
-          <Form.Item>
-            <Button
-              type="dashed"
-              onClick={() => add()}
-              style={{ width: '60%' }}
-              icon={<PlusOutlined />}
-            >
-              Add field
-            </Button>
-         
-            <Form.ErrorList errors={errors} />
-          </Form.Item>
-        </>
-      )}
-    </Form.List>
+  const [messageApi, contextHolder] = message.useMessage();
+  const key = 'updatable';
+  const openMessage = () => {
+    messageApi.open({
+      key,
+      type: 'loading',
+      content: 'Loading...',
+    });
+    setTimeout(() => {
+      messageApi.open({
+        key,
+        type: 'success',
+        content: 'Approved please continue',
+        duration: 3,
+      });
+    }, 1000);
+  };
+  const [form] = Form.useForm();
+  const dispatch = useDispatch()
+  const onFinish = (values: any) => {
    
-  </Form>
-</div>
-  );
-};
+    
+    dispatch(_cvAreasOfInterest(values))
+    openMessage()
+    
+  }
+  return (
+    <Form
+    onFinish={onFinish}
+    form={form}
+    validateMessages={validateMessages}
+    >
+      {contextHolder}
+      
+      <div className="flex w-full mt-[169px] mb-[169px] items-center justify-evenly ml-8">
 
-export default InterestAll;
+<div className="w-[400px] grid gap-2">
+  <div className="text-[20px] font-bold text-blue-500">technologies</div>
+  <Form.List
+    name="technologies"
+    rules={[
+      {
+        validator: async (_, names) => {
+          if (!names || names.length < 2) {
+            return Promise.reject(new Error('At least 2 passengers'));
+          }
+        },
+      },
+    ]}
+  >
+    {(fields, { add, remove }, { errors }) => (
+      <>
+        {fields.map((field) => (
+          <Form.Item
+          
+          
+            required={false}
+            key={field.key}
+          >
+            <Form.Item
+              {...field}
+              validateTrigger={['onChange', 'onBlur']}
+              rules={[
+                {
+                  required: true,
+                  whitespace: true,
+                  message: "Please input interests name or delete this field.",
+                },
+              ]}
+              noStyle
+            >
+              <Input placeholder="interests name" style={{ width: '60%' }} />
+            </Form.Item>
+            {fields.length > 1 ? (
+           
+                <MinusCircleOutlined
+                className="dynamic-delete-button ml-2 p-1"
+                onClick={() => remove(field.name)}
+              />
+          
+            ) : null}
+          </Form.Item>
+        ))}
+        <Form.Item>
+          <Button
+            type="dashed"
+            onClick={() => add()}
+            style={{ width: '60%' }}
+            icon={<PlusOutlined />}
+          >
+            Add interests
+          </Button>
+       
+          <Form.ErrorList errors={errors} />
+        </Form.Item>
+      </>
+    )}
+  </Form.List>
+
+</div>
+<div className="w-[400px] grid gap-2">
+  <div className="text-[20px] font-bold text-blue-500">interests</div>
+  <Form.List
+    name="interests"
+    rules={[
+      {
+        validator: async (_, names) => {
+          if (!names || names.length < 2) {
+            return Promise.reject(new Error('At least 2 passengers'));
+          }
+        },
+      },
+    ]}
+  >
+    {(fields, { add, remove }, { errors }) => (
+      <>
+        {fields.map((field) => (
+          <Form.Item
+          
+          
+            required={false}
+            key={field.key}
+          >
+            <Form.Item
+              {...field}
+              validateTrigger={['onChange', 'onBlur']}
+              rules={[
+                {
+                  required: true,
+                  whitespace: true,
+                  message: "Please input interests name or delete this field.",
+                },
+              ]}
+              noStyle
+            >
+              <Input placeholder="interests name" style={{ width: '60%' }} />
+            </Form.Item>
+            {fields.length > 1 ? (
+           
+                <MinusCircleOutlined
+                className="dynamic-delete-button ml-2 p-1"
+                onClick={() => remove(field.name)}
+              />
+          
+            ) : null}
+          </Form.Item>
+        ))}
+        <Form.Item>
+          <Button
+            type="dashed"
+            onClick={() => add()}
+            style={{ width: '60%' }}
+            icon={<PlusOutlined />}
+          >
+            Add interests
+          </Button>
+       
+          <Form.ErrorList errors={errors} />
+        </Form.Item>
+      </>
+    )}
+  </Form.List>
+
+</div>
+
+</div>
+<div className="flex ml-8 ">
+<Form.Item>
+      <Button  className="!bg-green-500" type="primary" htmlType="submit">
+         approve
+      </Button>
+    </Form.Item>
+
+</div>
+
+   
+    </Form>
+  )
+}
+
+export default InterestAll
+
+
 

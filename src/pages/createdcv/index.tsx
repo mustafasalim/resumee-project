@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { Button, message, Steps, theme } from 'antd';
+import { Button, message, Steps } from 'antd';
 import PersonelInformations from './personalinformations';
 import InterestAll from './interest/InterestAll';
+import LastCv from './lastCvContent';
+import EducationAndWork from './deneme';
+import RatePages from './RatePage';
+import AboutUs from './aboutUs';
 
 const steps = [
   {
@@ -9,14 +13,28 @@ const steps = [
     content: <PersonelInformations/>,
   },
   {
+    title: 'About Us',
+    content: <AboutUs/>,
+  },
+  {
+    title: 'Education And Work',
+    content: <EducationAndWork/>,
+  },
+  {
     title: 'Areas of interest',
     content: <InterestAll/>,
   },
+
   {
-    title: 'Last',
-    content: 'Last-content',
+    title: 'Rate',
+    content: <RatePages/>,
+  },
+  {
+    title: 'Finish',
+    content: <LastCv/>,
   },
 ];
+
 
 const CreatedCv: React.FC = () => {
 
@@ -35,8 +53,16 @@ const CreatedCv: React.FC = () => {
 
 
   return (
-<div className="w-full mt-10 mb-10 flex items-center justify-center font-['Rounded Mplus 1c']">
+
+<>
+
+<div className="w-full mt-36 mb-10 flex items-center justify-center font-['Rounded Mplus 1c']">
 <div className='w-[1400px]'>
+<div className='w-full  flex items-center justify-center'>
+  <div className='text-[34px] pb-10 font-bold '>
+  curriculum vitae
+  </div>
+</div>
 <Steps className='font-bold' current={current} items={items} />
       <div className='border rounded-md mt-5'>{steps[current].content}</div>
       <div style={{ marginTop: 24 }}>
@@ -57,7 +83,7 @@ const CreatedCv: React.FC = () => {
         )}
       </div>
 </div>
-</div>
+</div></>
   );
 };
 
