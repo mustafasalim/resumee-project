@@ -16,11 +16,14 @@
     "antd-img-crop": "^4.21.0",
     "framer-motion": "^10.16.16",
     "install": "^0.13.0",
+    "randomcolor": "^0.6.2",
     "rc-select": "^14.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
-    "react-router-dom": "6"
+    "react-router-dom": "6",
+    "react-to-pdf": "^1.0.1",
+    "uniqolor": "^1.1.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

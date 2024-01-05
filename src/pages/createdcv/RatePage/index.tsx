@@ -1,5 +1,5 @@
 import {  Space, Rate, message } from "antd"
-import React, { useState } from "react"
+import  { useState } from "react"
 
 function RatePages() {
   const desc = ["terrible", "bad", "normal", "good", "wonderful"]
@@ -16,7 +16,7 @@ function RatePages() {
       messageApi.open({
         key,
         type: 'success',
-        content: 'Thank you continue',
+        content: 'Thank you ',
         duration: 2,
       });
     }, 1000);

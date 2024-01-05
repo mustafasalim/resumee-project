@@ -6,13 +6,15 @@ export interface CounterState {
     workAndEducation :any,
     areasOfInterest : any,
     aboutUs : any
+    date : any
 }
 
 const initialState: CounterState = {
     informations : [],
     workAndEducation : [],
     areasOfInterest : [],
-    aboutUs : []
+    aboutUs : [],
+    date : ""
 }
 
 export const cvAllState = createSlice({
@@ -32,10 +34,13 @@ export const cvAllState = createSlice({
     _aboutUs : (state, action: PayloadAction<any>) => {
       state.aboutUs = action.payload
     },
+    _dateObject : (state, action: PayloadAction<any>) => {
+      state.areasOfInterest = action.payload
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {  _cvInformations ,_cvWorkAndEducation,_cvAreasOfInterest , _aboutUs} = cvAllState.actions
+export const {  _cvInformations ,_cvWorkAndEducation,_cvAreasOfInterest , _aboutUs,_dateObject} = cvAllState.actions
 
 export default cvAllState.reducer
