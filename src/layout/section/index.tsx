@@ -4,27 +4,27 @@ import React, { useState } from "react"
 function Section() {
   const desc = ["terrible", "bad", "normal", "good", "wonderful"]
   const [value, setValue] = useState(3)
-  const [messageApi, contextHolder] = message.useMessage();
-  const key = 'updatable';
+  const [messageApi, contextHolder] = message.useMessage()
+  const key = "updatable"
   const openMessage = () => {
     messageApi.open({
       key,
-      type: 'loading',
-      content: 'Loading...',
-    });
+      type: "loading",
+      content: "Loading...",
+    })
     setTimeout(() => {
       messageApi.open({
         key,
-        type: 'success',
-        content: 'Thank you',
+        type: "success",
+        content: "Thank you",
         duration: 2,
-      });
-    }, 1000);
-  };
+      })
+    }, 1000)
+  }
 
   return (
     <section>
-       {contextHolder}
+      {contextHolder}
       <div className="flex justify-evenly w-full mt-40">
         <div className="text-black text-[64px] font-extrabold">
           We made CV designs
@@ -41,9 +41,9 @@ function Section() {
             </Space>
           </div>
         </div>
-        <div className="w-[659px] h-[614px]">
+        <div className="w-[659px] h-[614px] shadow-md">
           <img
-            src="/image/resim2.png"
+            src="/image/resim3.png"
             alt=""
           />
         </div>

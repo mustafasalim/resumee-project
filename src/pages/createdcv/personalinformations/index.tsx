@@ -176,7 +176,7 @@ function PersonelInformations() {
       <div className="flex ml-8 mt-5">
         <Form.Item>
           <Button
-            className="!bg-green-500"
+            className="!bg-green-500 hover:opacity-70"
             type="primary"
             htmlType="submit"
           >
