@@ -99,12 +99,14 @@ function EducationAndWork() {
                               {subFields.map((subField) => (
                                 <Space key={subField.key}>
                                   <Form.Item
+                                    rules={[{ required: true }]}
                                     noStyle
                                     name={[subField.name, "first"]}
                                   >
                                     <Input placeholder="start date" />
                                   </Form.Item>
                                   <Form.Item
+                                    rules={[{ required: true }]}
                                     noStyle
                                     name={[subField.name, "second"]}
                                   >

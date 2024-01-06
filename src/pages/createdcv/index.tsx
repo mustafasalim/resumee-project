@@ -52,6 +52,8 @@ const CreatedCv: React.FC = () => {
   const cvStateAll = useSelector((state: any) => state.cvReducer)
   console.log(cvStateAll.aboutUs)
 
+  console.log(cvStateAll)
+
   return (
     <>
       <motion.div

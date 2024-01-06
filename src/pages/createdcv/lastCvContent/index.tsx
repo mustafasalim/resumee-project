@@ -2,33 +2,39 @@ import { useSelector } from "react-redux"
 import { _cvInformations } from "../../../redux/allCvState"
 import { usePDF } from "react-to-pdf"
 import uniqolor from "uniqolor"
-import { Button } from "antd"
+import { Button, Popconfirm } from "antd"
 import { FilePdfOutlined } from "@ant-design/icons"
 
 function LastCv() {
   const { toPDF, targetRef } = usePDF({ filename: "cv.pdf" })
 
-  const randomColor = uniqolor.random()
-
-  console.log(randomColor.color)
   const cvStateAll = useSelector((state: any) => state.cvReducer)
-
-  console.log(cvStateAll.workAndEducation.experi)
-  console.log(randomColor.color)
 
   // you can use a function to return the target element besides using React refs
 
   return (
     <>
       <div className="flex w-full items-center justify-center">
-        <Button
-          className="mt-10 mb-10 text-[20px] flex items-center p-5 !bg-red-500 hover:opacity-50"
-          onClick={() => toPDF()}
-          type="primary"
-          icon={<FilePdfOutlined />}
+        <Popconfirm
+          title="Download the pdf"
+          description="Are you sure to download this pdf?"
+          onConfirm={() =>
+            new Promise((resolve) => {
+              setTimeout(() => {
+                resolve(null)
+                toPDF()
+              }, 3000)
+            })
+          }
         >
-          Download(PDF)
-        </Button>
+          <Button
+            className="mt-10 mb-10 text-[20px] flex items-center p-5 !bg-red-500 hover:opacity-50"
+            type="primary"
+            icon={<FilePdfOutlined />}
+          >
+            Download(PDF)
+          </Button>
+        </Popconfirm>
       </div>
       <div
         ref={targetRef}
@@ -135,13 +141,19 @@ function LastCv() {
                       </div>
                     </div>
                     <div className="text-[#6e6e6e] text-[14px] font-bold">
-                      {title.list.map((date: any) => (
+                      {title.list ? (
                         <>
-                          <span>{date.first}</span>
-                          <span>-</span>
-                          <span>{date.second}</span>
+                          {title.list.map((date: any) => (
+                            <>
+                              <span>{date.first}</span>
+                              <span>-</span>
+                              <span>{date.second}</span>
+                            </>
+                          ))}
                         </>
-                      ))}
+                      ) : (
+                        <div>-</div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -163,13 +175,23 @@ function LastCv() {
                       </div>
                     </div>
                     <div className="text-[#6e6e6e] text-[14px] font-bold">
-                      {title.list.map((date: any) => (
+                      {title.list ? (
                         <>
-                          <span>{date.first}</span>
-                          <span>-</span>
-                          <span>{date.second}</span>
+                          {title.list.map((date: any) => (
+                            <>
+                              <span>
+                                {title.list ? date.first : <div>-</div>}
+                              </span>
+                              <span>-</span>
+                              <span>
+                                {title.list ? date.second : <div>-</div>}
+                              </span>
+                            </>
+                          ))}
                         </>
-                      ))}
+                      ) : (
+                        <div>-</div>
+                      )}
                     </div>
                   </div>
                 ))}
