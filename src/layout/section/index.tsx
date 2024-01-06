@@ -1,5 +1,5 @@
 import { QRCode, Space, Rate, message } from "antd"
-import React, { useState } from "react"
+import { useState } from "react"
 
 function Section() {
   const desc = ["terrible", "bad", "normal", "good", "wonderful"]

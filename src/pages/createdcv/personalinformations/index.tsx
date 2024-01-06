@@ -7,9 +7,8 @@ import {
   Button,
   message,
 } from "antd"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { _cvInformations, _dateObject } from "../../../redux/allCvState"
-import { useState } from "react"
 
 function PersonelInformations() {
   const validateMessages = {
