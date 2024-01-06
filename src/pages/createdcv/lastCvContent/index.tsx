@@ -2,7 +2,6 @@ import { useSelector } from "react-redux"
 import { _cvInformations } from "../../../redux/allCvState"
 import { usePDF } from "react-to-pdf"
 import uniqolor from "uniqolor"
-import { RootState } from "@reduxjs/toolkit/query"
 import { Button } from "antd"
 import { FilePdfOutlined } from "@ant-design/icons"
 
@@ -12,7 +11,7 @@ function LastCv() {
   const randomColor = uniqolor.random()
 
   console.log(randomColor.color)
-  const cvStateAll = useSelector((state: RootState) => state.cvReducer)
+  const cvStateAll = useSelector((state: any) => state.cvReducer)
 
   console.log(cvStateAll.workAndEducation.experi)
   console.log(randomColor.color)

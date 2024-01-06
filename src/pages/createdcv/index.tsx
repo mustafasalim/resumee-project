@@ -9,7 +9,6 @@ import AboutUs from "./aboutUs"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { useSelector } from "react-redux"
-import { RootState } from "@reduxjs/toolkit/query"
 
 const steps = [
   {
@@ -50,7 +49,7 @@ const CreatedCv: React.FC = () => {
   }
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }))
-  const cvStateAll = useSelector((state: RootState) => state.cvReducer)
+  const cvStateAll = useSelector((state: any) => state.cvReducer)
   console.log(cvStateAll.aboutUs)
 
   return (
