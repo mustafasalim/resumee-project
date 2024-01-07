@@ -1,4 +1,5 @@
 import { QRCode, Space } from "antd"
+import { Link } from "react-router-dom"
 
 function Section() {
   return (
@@ -16,7 +17,7 @@ function Section() {
             />
           </div>
         </div>
-        <div className="w-[659px] h-[614px] shadow-md">
+        <div className="w-[659px] h-[614px] shadow">
           <img
             src="/image/resim3.png"
             alt=""
@@ -46,9 +47,21 @@ function Section() {
 
         <div className="text-black text-[40px] font-extrabold text-center  w-full flex items-center justify-center">
           <div className="mt-10">
-            You can access the <span className="text-[#2C7FFB]">github</span>{" "}
-            and <br /> <span className="text-[#2C7FFB]">vercel</span> project by
-            scanning the QR code.
+            You can access the{" "}
+            <Link
+              to="https://github.com/mustafasalim"
+              className="text-[#2C7FFB] hover:opacity-75 underline transition-all"
+            >
+              github
+            </Link>{" "}
+            and <br />{" "}
+            <Link
+              to="https://resumee-project.vercel.app/"
+              className="text-[#2C7FFB] underline hover:opacity-75 transition-all"
+            >
+              vercel
+            </Link>{" "}
+            project by scanning the QR code.
           </div>
         </div>
       </div>

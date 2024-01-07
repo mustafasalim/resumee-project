@@ -20,7 +20,7 @@ function Header() {
           <div>
             <Link to="/create-cv">
               <Button
-                className="!bg-[#78584C] mt-40 !h-16 w-40  rounded-[20px] font-bold hover:opacity-55  !text-[30px]"
+                className="!bg-blue-500 text-blue-100 mt-40 !h-16 w-40  rounded-[20px] font-bold hover:opacity-85  !text-[30px]"
                 size="large"
                 type="primary"
               >
