@@ -1,44 +1,19 @@
-import { QRCode, Space, Rate, message } from "antd"
-import { useState } from "react"
+import { QRCode, Space } from "antd"
 
 function Section() {
-  const desc = ["terrible", "bad", "normal", "good", "wonderful"]
-  const [value, setValue] = useState(3)
-  const [messageApi, contextHolder] = message.useMessage()
-  const key = "updatable"
-  const openMessage = () => {
-    messageApi.open({
-      key,
-      type: "loading",
-      content: "Loading...",
-    })
-    setTimeout(() => {
-      messageApi.open({
-        key,
-        type: "success",
-        content: "Thank you",
-        duration: 2,
-      })
-    }, 1000)
-  }
-
   return (
     <section>
-      {contextHolder}
       <div className="flex justify-evenly w-full mt-40">
         <div className="text-black text-[64px] font-extrabold">
           We made CV designs
           <br />
           more modern and useful
-          <div className="mt-56 text-[40px] text-green-500">
-            <Space onClick={openMessage}>
-              <Rate
-                tooltips={desc}
-                onChange={setValue}
-                value={value}
-              />
-              {value ? <span>{desc[value - 1]}</span> : ""}
-            </Space>
+          <div className="w-full flex items-center justify-start mr-10">
+            <img
+              width={400}
+              src="image/resim5.png"
+              alt=""
+            />
           </div>
         </div>
         <div className="w-[659px] h-[614px] shadow-md">

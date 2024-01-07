@@ -9,6 +9,7 @@ import {
 } from "antd"
 import { useDispatch } from "react-redux"
 import { _cvInformations, _dateObject } from "../../../redux/allCvState"
+import { useSelector } from "react-redux"
 
 function PersonelInformations() {
   const validateMessages = {
@@ -23,7 +24,7 @@ function PersonelInformations() {
       sm: { span: 20 },
     },
   }
-  // const date = useSelector((state: RootState) => state.cvReducer)
+  const cvStateAll = useSelector((state: any) => state.cvReducer)
 
   const [messageApi, contextHolder] = message.useMessage()
   const key = "updatable"
