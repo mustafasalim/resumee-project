@@ -14,7 +14,7 @@ const initialState: CounterState = {
     workAndEducation : [],
     areasOfInterest : [],
     aboutUs : [],
-    date : ""
+    date : []
 }
 
 export const cvAllState = createSlice({
@@ -35,7 +35,7 @@ export const cvAllState = createSlice({
       state.aboutUs = action.payload
     },
     _dateObject : (state, action: PayloadAction<any>) => {
-      state.areasOfInterest = action.payload
+      state.date = action.payload
     },
   },
 })

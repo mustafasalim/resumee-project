@@ -9,11 +9,16 @@ import AboutUs from "./aboutUs"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 import { useSelector } from "react-redux"
+import PhotoImg from "./Photo"
 
 const steps = [
   {
     title: "Personel Informations",
     content: <PersonelInformations />,
+  },
+  {
+    title: "Profile photo",
+    content: <PhotoImg />,
   },
   {
     title: "About Us",
