@@ -32,7 +32,7 @@ function LastCv() {
             type="primary"
             icon={<FilePdfOutlined />}
           >
-            Download(PDF)
+            Download
           </Button>
         </Popconfirm>
       </div>
