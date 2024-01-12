@@ -2,8 +2,8 @@ import { useSelector } from "react-redux"
 import { _cvInformations } from "../../../redux/allCvState"
 import { usePDF } from "react-to-pdf"
 import uniqolor from "uniqolor"
-import { Button, Popconfirm } from "antd"
-import { FilePdfOutlined } from "@ant-design/icons"
+import { FloatButton, Popconfirm } from "antd"
+import { DownloadOutlined } from "@ant-design/icons"
 
 function LastCv() {
   const { toPDF, targetRef } = usePDF({ filename: "cv.pdf" })
@@ -13,8 +13,8 @@ function LastCv() {
   // you can use a function to return the target element besides using React refs
 
   return (
-    <>
-      <div className="flex w-full items-center justify-center">
+    <div>
+      <div className="flex w-full absolute top-0 left-0 items-center z-10 justify-center">
         <Popconfirm
           title="Download the pdf"
           description="Are you sure to download this pdf?"
@@ -27,19 +27,20 @@ function LastCv() {
             })
           }
         >
-          <Button
-            className="mt-10 mb-10 text-[20px] flex items-center p-5 !bg-red-500 hover:opacity-50"
+          <FloatButton
+            className="hover:opacity-50"
             type="primary"
-            icon={<FilePdfOutlined />}
+            shape="square"
+            icon={<DownloadOutlined />}
           >
             Download
-          </Button>
+          </FloatButton>
         </Popconfirm>
       </div>
       <div
         ref={targetRef}
         id="content-id"
-        className="flex w-full "
+        className="flex w-full relative"
       >
         <div className="w-2/4 border-r">
           <div className="grid mt-5 ml-8">
@@ -83,7 +84,7 @@ function LastCv() {
             <div className="grid gap-y-0.5">
               <div className="mt-4 text-[20px] font-bold">birtday</div>
               <div className="text-[16px] font-bold text-[#6e6e6e]">
-                20/01/2004
+                {cvStateAll.informations.dateOfBirth.$y}
               </div>
             </div>
             <div className="grid gap-y-0.5">
@@ -116,7 +117,7 @@ function LastCv() {
                 ) : (
                   <div>
                     {cvStateAll.areasOfInterest.interests.map((title: any) => (
-                      <li>{title}</li>
+                      <li>- {title}</li>
                     ))}
                   </div>
                 )}
@@ -130,7 +131,7 @@ function LastCv() {
             <div className="text-[20px] font-bold">work experience</div>
             <div className="h-0.5 mt-3 w-[500px] rounded-3xl bg-[#f0f0f0]"></div>
             {cvStateAll.workAndEducation.length === 0 ? (
-              <div>-</div>
+              <div className="text-[16px] font-bold text-[#6e6e6e]">-</div>
             ) : (
               <div>
                 {cvStateAll.workAndEducation.experience.map((title: any) => (
@@ -164,7 +165,7 @@ function LastCv() {
             <div className="text-[20px] font-bold">education</div>
             <div className="h-0.5 mt-3 w-[500px] rounded-3xl bg-[#f0f0f0]"></div>
             {cvStateAll.workAndEducation.length === 0 ? (
-              <div>-</div>
+              <div className="text-[16px] font-bold text-[#6e6e6e]">-</div>
             ) : (
               <div>
                 {cvStateAll.workAndEducation.education.map((title: any) => (
@@ -204,29 +205,38 @@ function LastCv() {
             <div className="h-0.5 mt-3 w-[500px] rounded-3xl bg-[#f0f0f0]"></div>
 
             <div className="mt-4">
-              <div className="text-[15px] text-[#6e6e6e] break-words font-bold leading-8 ">
+              <div className="text-[15px] w-[650px] text-[#6e6e6e] break-words font-bold leading-8 ">
                 {cvStateAll.aboutUs.length === 0 ? (
                   <div>-</div>
                 ) : (
-                  <div>{cvStateAll.aboutUs.about}</div>
+                  <div className="!break-words leading-8 whitespace-normal">
+                    {cvStateAll.aboutUs.about}
+                  </div>
                 )}
               </div>
             </div>
           </div>
           <div className="grid mt-5 ml-8">
-            <div className="text-[26px] font-bold"></div>
+            <div className="text-[20px] font-bold">technology</div>
             <div className="h-0.5 mt-3 w-[500px] rounded-3xl bg-[#f0f0f0]"></div>
 
-            <div className="mt-4">
+            <div className="mt-4 w-[650px]">
               <ul className="flex gap-x-4 text-[15px] font-bold">
                 {cvStateAll.areasOfInterest.length === 0 ? (
                   <div>-</div>
                 ) : (
-                  <div className="flex gap-x-3">
+                  <div className="flex flex-wrap whitespace-nowrap  gap-x-3  break-words ">
                     {cvStateAll.areasOfInterest.technologies.map(
                       (title: any) => {
                         const color = uniqolor.random().color
-                        return <li style={{ color: color }}>{title},</li>
+                        return (
+                          <li
+                            className="break-words "
+                            style={{ color: color }}
+                          >
+                            {title},
+                          </li>
+                        )
                       }
                     )}
                   </div>
@@ -236,7 +246,7 @@ function LastCv() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

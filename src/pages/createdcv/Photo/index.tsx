@@ -38,9 +38,9 @@ function PhotoImg() {
     setTimeout(() => {
       messageApi.open({
         key,
-        type: "success",
-        content: "Approved please continue",
-        duration: 3,
+        type: "error",
+        content: "could not be confirmed (coming soon)",
+        duration: 2,
       })
     }, 1000)
   }

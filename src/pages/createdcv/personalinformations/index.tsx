@@ -103,7 +103,6 @@ function PersonelInformations() {
               <DatePicker
                 format="DD/MM/YYYY"
                 placeholder="DD/MM/YYYY"
-                allowClear={false}
               />
             </Form.Item>
           </div>

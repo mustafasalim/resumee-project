@@ -55,8 +55,6 @@ const CreatedCv: React.FC = () => {
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }))
   const cvStateAll = useSelector((state: any) => state.cvReducer)
-  console.log(cvStateAll.aboutUs)
-
   console.log(cvStateAll)
 
   return (
@@ -68,7 +66,7 @@ const CreatedCv: React.FC = () => {
       >
         <div className="w-[1400px]">
           <div className="w-full  flex items-center justify-center">
-            <div className="text-[34px] pb-10 font-bold ">curriculum vitae</div>
+            <div className="text-[44px] pb-10 font-bold ">curriculum vitae</div>
           </div>
           <Steps
             className="font-bold"
