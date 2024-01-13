@@ -142,7 +142,7 @@ function PersonelInformations() {
                 { required: true, message: "Please select martial status" },
               ]}
             >
-              <Select placeholder="select your nationlatiy">
+              <Select placeholder="select your marital status">
                 <Option value="single">Single</Option>
                 <Option value="married">Married</Option>
                 <Option value="windowed">Widowed</Option>

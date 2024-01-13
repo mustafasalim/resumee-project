@@ -19,7 +19,7 @@ function Section() {
         </div>
         <div className="w-[659px] h-[614px] shadow">
           <img
-            src="/image/resim3.png"
+            src="/image/cu3.png"
             alt=""
           />
         </div>

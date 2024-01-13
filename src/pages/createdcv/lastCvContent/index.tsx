@@ -23,7 +23,7 @@ function LastCv() {
               setTimeout(() => {
                 resolve(null)
                 toPDF()
-              }, 3000)
+              }, 1000)
             })
           }
         >
